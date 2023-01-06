@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.0
+%define		kdeappsver	22.12.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkeduvocdocument
 Summary:	libkeduvocdocument
 Name:		ka5-%{kaname}
-Version:	22.12.0
-Release:	2
+Version:	22.12.1
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	0d21a7f0659a7cb028c91bc1c748d830
+# Source0-md5:	f60a78709f4f36c45b867858db30393b
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel
