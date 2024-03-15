@@ -1,30 +1,30 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkeduvocdocument
 Summary:	libkeduvocdocument
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	faebeca553b1e4bfb768a005d03f1036
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	b972b8785e22b190a539240cc6c47559
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel
-BuildRequires:	Qt6Xml-devel
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf6-karchive-devel >= %{kframever}
-BuildRequires:	kf6-ki18n-devel >= %{kframever}
-BuildRequires:	kf6-kio-devel >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-karchive-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -60,8 +60,7 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	-DQT_MAJOR_VERSION=6
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 %ninja_build -C build
 
 %if %{with tests}
@@ -84,7 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %ghost %{_libdir}/libKEduVocDocument.so.5
-%attr(755,root,root) %{_libdir}/libKEduVocDocument.so.*.*
+%{_libdir}/libKEduVocDocument.so.5.*.*
+
 
 %files devel
 %defattr(644,root,root,755)
